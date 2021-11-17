@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.security.InvalidParameterException;
 
 abstract class Car {
     protected int nrDoors; // Number of doors on the car
@@ -54,28 +55,34 @@ abstract class Car {
     public void decrementSpeed(double amount) {
         currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
     }
-    public void gas(double amount){
-        incrementSpeed(amount);
+    public void gas(double amount) throws InvalidParameterException{
+        if (amount <= 1 && amount >= 0){
+            incrementSpeed(amount);
+        } else {
+            throw new InvalidParameterException("Please input an amount in the interval [0,1]");
+        }
+
     }
 
-    public void brake(double amount){
-        decrementSpeed(amount);
+    public void brake(double amount) throws InvalidParameterException{
+        if (amount <= 1 && amount >= 0){
+            decrementSpeed(amount);
+        } else {
+            throw new InvalidParameterException("Please input an amount in the interval [0,1]");
+        }
     }
 
     public void move(){
         this.x += getCurrentSpeed() * Math.cos(Math.toRadians(this.dir));
         this.y += getCurrentSpeed() * Math.sin(Math.toRadians(this.dir));
-//        System.out.println("X: " + this.x );
-//        System.out.println("Y: " + this.y );
+
     }
     public void turnLeft(){
         this.dir += 45;
         this.dir %= 360;
-//        System.out.println("The " + this.modelName + " just turned left");
     }
     public void turnRight() {
         this.dir -= 45;
         this.dir %= 360;
-//        System.out.println("The " + this.modelName + " just turned right");
     }
 }

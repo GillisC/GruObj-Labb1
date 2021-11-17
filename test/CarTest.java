@@ -2,6 +2,7 @@ import org.junit.Test;
 
 import java.awt.*;
 import java.awt.image.ConvolveOp;
+import java.security.InvalidParameterException;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -52,7 +53,7 @@ public class CarTest {
         assertEquals(0, volvo.x, 0.01);
     }
     @Test
-    public void should_move_if_engineOn(){
+    public void should_move_if_engineOn() throws InvalidParameterException {
         Volvo240 volvo = new Volvo240();
         volvo.dir = 90;
         volvo.y = 0;
@@ -62,7 +63,7 @@ public class CarTest {
         assertTrue(volvo.y > 0);
     }
     @Test
-    public void brake_should_lower_currentSpeed(){
+    public void brake_should_lower_currentSpeed() throws InvalidParameterException {
         Volvo240 volvo = new Volvo240();
         volvo.startEngine();
         volvo.gas(1);
