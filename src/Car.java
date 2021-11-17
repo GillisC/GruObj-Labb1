@@ -61,7 +61,6 @@ abstract class Car {
         } else {
             throw new InvalidParameterException("Please input an amount in the interval [0,1]");
         }
-
     }
 
     public void brake(double amount) throws InvalidParameterException{

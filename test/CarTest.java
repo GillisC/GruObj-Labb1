@@ -4,8 +4,7 @@ import java.awt.*;
 import java.awt.image.ConvolveOp;
 import java.security.InvalidParameterException;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class CarTest {
 
@@ -77,6 +76,20 @@ public class CarTest {
         volvo.dir = 90;
         volvo.turnRight();
         assertEquals(45, volvo.dir);
+    }
+    @Test
+    public void exceptionShouldBeThrownGas(){
+        InvalidParameterException thrown =  assertThrows(InvalidParameterException.class, () -> {
+            Volvo240 volvo = new Volvo240();
+            volvo.gas(10);
+        });
+    }
+    @Test
+    public void exceptionShouldBeThrownBrake(){
+        InvalidParameterException thrown =  assertThrows(InvalidParameterException.class, () -> {
+            Volvo240 volvo = new Volvo240();
+            volvo.brake(10);
+        });
     }
 
 

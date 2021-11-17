@@ -2,8 +2,7 @@ import org.junit.Test;
 
 import java.awt.*;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.*;
 
 public class Saab95test {
 
@@ -11,6 +10,19 @@ public class Saab95test {
 
     @Test
     public void saab_turbo_should_be_false_at_start(){
+        assertFalse(saab.turboOn);
+    }
+
+    @Test
+    public void setTurboOnShouldTurnTurboOn() {
+        saab.setTurboOn();
+        assertTrue(saab.turboOn);
+    }
+
+    @Test
+    public void setTurboOffShouldTurnTurboOff() {
+        saab.setTurboOn();
+        saab.setTurboOff();
         assertFalse(saab.turboOn);
     }
     @Test
