@@ -1,6 +1,6 @@
 import java.awt.*;
 
-abstract class car {
+abstract class Car {
     protected int nrDoors; // Number of doors on the car
     protected double enginePower; // Engine power of the car
     protected double currentSpeed; // The current speed of the car
@@ -10,7 +10,7 @@ abstract class car {
     protected int y;
     protected int dir; // The Car's direction in Degrees
     protected boolean turboOn;
-
+    protected boolean engineOn;
 
     public int getNrDoors(){
         return nrDoors;
@@ -33,16 +33,23 @@ abstract class car {
 
     protected void startEngine(){
         currentSpeed = 0.1;
+        engineOn = true;
     }
 
     protected void stopEngine(){
         currentSpeed = 0;
+        engineOn = false;
     }
 
     abstract public double speedFactor(); // Instantiated objects have to implement as they differ
 
     public void incrementSpeed(double amount){
-        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, enginePower);
+        if (engineOn){
+            currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, enginePower);
+        }
+        else{
+            currentSpeed = 0;
+        }
     }
     public void decrementSpeed(double amount) {
         currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);

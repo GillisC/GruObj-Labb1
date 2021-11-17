@@ -1,6 +1,6 @@
 import java.awt.*;
 
-class Saab95 extends car{
+class Saab95 extends Car {
     
     public Saab95() {
         nrDoors = 2;
@@ -12,11 +12,10 @@ class Saab95 extends car{
         dir = 45;
     }
 
-    private void setTurboOn(){
+    public void setTurboOn(){
 	    turboOn = true;
     }
-
-    private void setTurboOff(){
+    public void setTurboOff(){
 	    turboOn = false;
     }
     
